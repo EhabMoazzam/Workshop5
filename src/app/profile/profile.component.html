@@ -1,0 +1,39 @@
+<h3>Profile Page</h3>
+
+<table *ngIf="is_show" class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">Valid</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{username}}</td>
+        <td>{{birthday}}</td>
+        <td>{{age}}</td>
+        <td>{{email}}</td>
+        <td>{{valid}}</td>
+        <td><button (click)="edit()" type="button" >Edit</button></td>
+      </tr>
+    </tbody>
+</table>
+
+<div *ngIf="is_edit" class="editPanel">
+    <hr>
+    <p>Please edit your information below</p>
+
+    <form #userInfo = "ngForm" (ngSubmit) = "submit(userInfo.value)">
+        <p class="form-group">Username : <input class="form-control" type="text" name="username" value={{username}} placeholder="{{username}}" ngModel/></p>
+        <p class="form-group">Birthday : <input class="form-control" type="text" name="birthday" value={{birthday}} placeholder="{{birthday}}" ngModel/> </p>
+        <p class="form-group">Age : <input class="form-control" type="text" name="age" value={{age}} placeholder="{{age}}" ngModel/></p>
+        <p class="form-group">Email : <input class="form-control" type="text" name="email" value={{email}} placeholder="{{email}}" ngModel/></p>
+        <p class="form-group">Valid : <input class="form-control" type="text" name="valid" value={{valid}} placeholder="{{valid}}" ngModel/></p>
+        <p class="clearfix"><button type="submit" class="btn btn-primary">Submit</button></p>
+    </form>
+
+</div>
